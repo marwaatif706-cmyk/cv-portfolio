@@ -3,117 +3,469 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Maroua Atif</title>
+    <title>CV Créatif - Maroua Atif | Marketing Digital</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --accent: #fd79a8;
+            --dark: #2d3436;
+            --light: #dfe6e9;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f9;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
         }
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 30px;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
-        }
-        header h1 { margin: 0; font-size: 2.5em; }
-        .contact-info { margin-top: 10px; font-size: 0.9em; }
-        
-        section {
-            background: white;
-            padding: 20px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #2980b9;
-            border-bottom: 2px solid #2980b9;
-            padding-bottom: 5px;
-            text-transform: uppercase;
-            font-size: 1.2em;
-        }
-        .item { margin-bottom: 15px; }
-        .date { font-weight: bold; color: #7f8c8d; min-width: 100px; display: inline-block; }
-        
-        ul { padding-left: 20px; }
-        .skills-list {
+
+        /* Container Principal avec effet Glassmorphism */
+        .resume-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 350px 1fr;
+            width: 100%;
+            max-width: 1100px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            min-height: 800px;
+        }
+
+        /* --- SIDEBAR GAUCHE --- */
+        .sidebar {
+            background: var(--dark);
+            color: var(--white);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Cercle décoratif */
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            background: #fff;
+            border-radius: 50%;
+            margin: 0 auto;
+            border: 5px solid var(--accent);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-info h3, .skills-section h3, .languages h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .contact-item i {
+            width: 35px;
+            height: 35px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--accent);
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
             gap: 10px;
         }
-        .badge {
-            background: #ecf0f1;
-            padding: 5px 10px;
-            border-radius: 4px;
+
+        .tag {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Barres de progression pour les langues */
+        .lang-item {
+            margin-bottom: 15px;
+        }
+        .lang-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
             font-size: 0.9em;
+        }
+        .progress-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        /* --- MAIN CONTENT DROITE --- */
+        .main-content {
+            padding: 50px;
+            position: relative;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            line-height: 1;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .job-title {
+            font-size: 1.4em;
+            color: #636e72;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: var(--dark);
+            margin: 40px 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        .about-text {
+            color: #636e72;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.05em;
+        }
+
+        /* Timeline Style */
+        .timeline {
+            border-left: 3px solid var(--light);
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background: var(--white);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-date {
+            font-size: 0.9em;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .timeline-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-place {
+            font-style: italic;
+            color: #636e72;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            color: #636e72;
+            font-size: 0.95em;
+        }
+
+        /* Button Action */
+        .btn-download {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+            transition: transform 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-download:hover {
+            transform: scale(1.05);
+            background: var(--accent);
+        }
+
+        /* Nouveau bouton sidebar */
+        .btn-sidebar-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: var(--white);
+            color: var(--dark);
+            text-align: center;
+            padding: 12px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .btn-sidebar-download:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .resume-container {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                height: auto;
+            }
+            .sidebar {
+                padding: 40px;
+                text-align: center;
+            }
+            .profile-photo {
+                margin: 0 auto 20px auto;
+            }
+            .contact-item {
+                justify-content: center;
+            }
+            .tag-container {
+                justify-content: center;
+            }
+            .main-content {
+                padding: 30px;
+            }
+            h1 { font-size: 2.5em; }
+            .btn-download {
+                position: static;
+                display: block;
+                text-align: center;
+                margin-top: 20px;
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        [cite_start]<h1>Maroua Atif [cite: 1]</h1>
-        <div class="contact-info">
-            [cite_start]19 ans - Salé, Maroc [cite: 2] | [cite_start]+212 601 366 287 [cite: 3] [cite_start]| marwaatif706@gmail.com [cite: 3]
-        </div>
-    </header>
+    <div class="resume-container">
+        <!-- Sidebar Gauche -->
+        <aside class="sidebar">
+            <div class="profile-photo">
+                <!-- Remplacer par une image si disponible -->
+                <span>MA</span> 
+            </div>
 
-    <section>
-        <h2>À propos de moi</h2>
-        <p>
-            [cite_start]Je suis une personne très déterminée dans l'atteinte de mes objectifs[cite: 21]. 
-            [cite_start]Je souhaite effectuer un stage dans le domaine du marketing digital afin de renforcer mon expérience et contribuer activement aux projets de l'entreprise[cite: 23].
-        </p>
-    </section>
+            <div class="contact-info">
+                <h3>Contact</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Salé, Maroc</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+212 601 366 287</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span style="font-size:0.85em">marwaatif706@gmail.com</span>
+                </div>
+            </div>
 
-    <section>
-        <h2>Éducation</h2>
-        <div class="item">
-            <span class="date">2025-Présent</span>
-            [cite_start]<strong>Licence, Marketing digital et commercial</strong> - École Supérieure de Technologie de Salé [cite: 6, 8]
-        </div>
-        <div class="item">
-            <span class="date">2024</span>
-            [cite_start]<strong>Baccalauréat, Sciences économiques</strong> (Mention Bien) [cite: 5]
-        </div>
-    </section>
+            <div class="skills-section">
+                <h3>Compétences</h3>
+                <div class="tag-container">
+                    <span class="tag">Marketing Digital</span>
+                    <span class="tag">Esprit d'équipe</span>
+                    <span class="tag">Créativité</span>
+                    <span class="tag">Gestion de projet</span>
+                    <span class="tag">Organisation</span>
+                    <span class="tag">Innovation</span>
+                </div>
+            </div>
 
-    <section>
-        <h2>Expérience Professionnelle</h2>
-        <div class="item">
-            <span class="date">Stage</span>
-            [cite_start]<strong>Stage d'observation</strong> - Topographie Concept, Casablanca [cite: 10]
-            <ul>
-                [cite_start]<li>Acquisition de connaissances en organisation d'entreprise[cite: 11].</li>
-                [cite_start]<li>Gestion économique de projets techniques[cite: 11].</li>
-            </ul>
-        </div>
-    </section>
+            <div class="languages">
+                <h3>Langues</h3>
+                <div class="lang-item">
+                    <div class="lang-name">
+                        <span>Arabe</span>
+                        <span>Maternelle</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 100%"></div></div>
+                </div>
+                <div class="lang-item">
+                    <div class="lang-name">
+                        <span>Français</span>
+                        <span>Courant</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                </div>
+                <div class="lang-item">
+                    <div class="lang-name">
+                        <span>Anglais</span>
+                        <span>Moyen</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 60%"></div></div>
+                </div>
+            </div>
 
-    <section>
-        <h2>Qualités et Compétences</h2>
-        <div class="skills-list">
-            [cite_start]<div class="badge">Sérieuse et motivée [cite: 17]</div>
-            [cite_start]<div class="badge">Créative et innovante [cite: 18]</div>
-            [cite_start]<div class="badge">Dynamique et adaptable [cite: 19]</div>
-            [cite_start]<div class="badge">Esprit d'équipe [cite: 19]</div>
-            [cite_start]<div class="badge">Développement de projets marketing [cite: 22]</div>
-        </div>
-    </section>
+            <!-- Bouton Télécharger ajouté ici -->
+            <a href="Maroua ATIF_CV.pdf" download class="btn-sidebar-download">
+                <i class="fas fa-file-pdf"></i> Télécharger CV
+            </a>
 
-    <section>
-        <h2>Langues</h2>
-        <ul>
-            [cite_start]<li><strong>Arabe :</strong> Maternelle [cite: 13]</li>
-            [cite_start]<li><strong>Français :</strong> Courant [cite: 14]</li>
-            [cite_start]<li><strong>Anglais :</strong> Moyen [cite: 15]</li>
-        </ul>
-    </section>
+        </aside>
+
+        <!-- Contenu Principal -->
+        <main class="main-content">
+            <button class="btn-download" onclick="window.print()">
+                <i class="fas fa-print"></i> Imprimer
+            </button>
+
+            <header>
+                <h1>Maroua Atif</h1>
+                <p class="job-title">Étudiante en Marketing Digital & Commercial</p>
+            </header>
+
+            <section>
+                <h2 class="section-title"><i class="fas fa-user"></i> À propos de moi</h2>
+                <p class="about-text">
+                    Je suis une personne très déterminée, orientée vers l'atteinte de mes objectifs. 
+                    Actuellement, je cherche à développer mes compétences professionnelles en marketing digital et commercial.
+                    Je souhaite intégrer une équipe de professionnels pour un stage afin de mettre en pratique mes connaissances
+                    et contribuer activement aux projets innovants de l'entreprise.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formation</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-date">2025 - Présent</span>
+                        <h3 class="timeline-title">Licence Marketing Digital et Commercial</h3>
+                        <p class="timeline-place">École Supérieure de Technologie de Salé</p>
+                        <p class="timeline-desc">2ème année en cours.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">2024</span>
+                        <h3 class="timeline-title">Baccalauréat Sciences Économiques</h3>
+                        <p class="timeline-place">Maroc</p>
+                        <p class="timeline-desc">Mention Bien.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Expérience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-date">Stage d'observation</span>
+                        <h3 class="timeline-title">Stagiaire</h3>
+                        <p class="timeline-place">Topographie Concept, Casablanca</p>
+                        <p class="timeline-desc">
+                            Acquisition de connaissances en organisation d'entreprise et participation à la gestion économique de projets techniques.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
 
 </body>
 </html>
